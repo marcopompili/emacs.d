@@ -10,7 +10,7 @@
 ;; Setting up Melpa
 (require 'package)
 (add-to-list 'package-archives
- 	     '("melpa" . "https://melpa.org/packages/") t)
+             '("melpa" . "https://melpa.org/packages/") t)
 
 ;; add custom-modes (outside melpa) load path
 ;; (add-to-list 'load-path "~/.emacs.d/custom-modes")
@@ -96,7 +96,7 @@
  '(objed-cursor-color "#e74c3c")
  '(package-selected-packages
    (quote
-    (diff-hl guru-mode zeno-theme one-themes doom-themes all-the-icons csv-mode restclient restclient-helm company-lua figlet company-edbi edbi edbi-sqlite company-box tern glsl-mode-hook glsl-mode solarized-theme nimbus-theme poet-theme vue-html-mode vue-mode gruvbox-theme color-theme-sanityinc-tomorrow material-theme company-tern fortune-cookie monokai-theme cyberpunk-theme el-search js2-refactor go-mode cmake-mode lice 0blayout realgud indium langtool geben web-mode php-mode yaml-mode websocket smooth-scroll markdown-mode dumb-jump helm-dash parinfer paredit xclip julia-mode python flycheck flycheck-haskell ac-cider magit highlight-parentheses haskell-mode cider company which-key sx slime projectile org nodejs-repl lua-mode dockerfile-mode docker)))
+    (xref-js2 rjsx-mode indium diff-hl guru-mode zeno-theme one-themes doom-themes all-the-icons csv-mode restclient restclient-helm company-lua figlet company-edbi edbi edbi-sqlite company-box tern glsl-mode-hook glsl-mode solarized-theme nimbus-theme poet-theme vue-html-mode vue-mode gruvbox-theme color-theme-sanityinc-tomorrow material-theme company-tern fortune-cookie monokai-theme cyberpunk-theme el-search js2-refactor go-mode cmake-mode lice 0blayout realgud langtool geben web-mode php-mode yaml-mode websocket smooth-scroll markdown-mode dumb-jump helm-dash parinfer paredit xclip julia-mode python flycheck flycheck-haskell ac-cider magit highlight-parentheses haskell-mode cider company which-key sx slime projectile org nodejs-repl lua-mode dockerfile-mode docker)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
@@ -162,20 +162,49 @@
 ;; smooth scroll one line at a time
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 
+;; js2-mode full activation
+(require 'js2-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;; js2-minor-mode with js-mode
+;; (add-hook 'js-mode-hook 'js2-minor-mode)
+;; (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+
+;; js2 advancements
+;; https://emacs.cafe/emacs/javascript/setup/2017/04/23/emacs-setup-javascript.html
+;; (add-hook 'js2-mode-hook #'js2-refactor-mode)
+;; (js2r-add-keybindings-with-prefix "C-c C-r")
+;; (define-key js2-mode-map (kbd "C-k") #'js2r-kill)
+
+;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
+;; unbind it.
+;; (define-key js-mode-map (kbd "M-.") nil)
+
+;; (add-hook 'js2-mode-hook (lambda ()
+;;                            (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+
 ;; company-tern (JS completion)
+;; https://emacs.cafe/emacs/javascript/setup/2017/05/09/emacs-setup-javascript-2.html
+(require 'company)
+(require 'company-tern)
+
 (add-to-list 'company-backends 'company-tern)
-(add-hook 'js-mode-hook (lambda ()
+(add-hook 'js2-mode-hook (lambda ()
                           (tern-mode t)
                           (company-mode t)))
 
-;; Indium config
-;; (add-hook 'js-mode-hook #'indium-interaction-mode)
+;; Disable completion keybindings, as we use xref-js2 instead (tern-mode-keymap gives an error)
+;; (define-key tern-mode-keymap (kbd "M-.") nil)
+;; (define-key tern-mode-keymap (kbd "M-,") nil)
+
+;; Indium interaction mode
+(require 'indium)
+(add-hook 'js2-mode-hook #'indium-interaction-mode)
 
 ;; Indium: Launch temporary instance of chrome
 (setq indium-chrome-use-temporary-profile t)
 
-;; run indium from local git repo
-;; (add-to-list 'load-path "~/DevLab/github/Indium")
+;; Indium debug log
+;; (setq indium-client-debug t)
 
 ;; GLSL mode
 (autoload 'glsl-mode "glsl-mode" nil t)
@@ -191,9 +220,9 @@
 
 (defun my-lua-mode-company-init ()
   (setq-local company-backends '((company-lua
-				  company-etags
-				  company-dabbrev-code
-				  company-yasnippet))))
+                                  company-etags
+                                  company-dabbrev-code
+                                  company-yasnippet))))
 
 ; Lua company mode hook
 (add-hook 'lua-mode-hook #'my-lua-mode-company-init)
@@ -211,12 +240,9 @@
 
 ;; Use fortune cookie for great wisdom
 (fortune-cookie-mode)
-;; (use-package fortune-cookie
-;;   :config
-;;   (setq fortune-cookie-cowsay-args "-f tux -s")
-;;   (fortune-cookie-mode))
 
-;; Ignore GConf (workaround for setting custom faces) https://emacs.stackexchange.com/questions/32641/something-changes-the-default-face-in-my-emacs 
+;; Ignore GConf (workaround for setting custom faces)
+;; https://emacs.stackexchange.com/questions/32641/something-changes-the-default-face-in-my-emacs 
 (define-key special-event-map [config-changed-event] 'ignore)
 
 ;; Custom faces
