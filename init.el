@@ -2,6 +2,7 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
+;;; Code:
 (package-initialize)
 
 ;; Setting this buffer as init file
@@ -39,50 +40,45 @@
  '(cider-cljs-lein-repl
    "(do (require 'figwheel-sidecar.repl-api) (figwheel-sidecar.repl-api/start-figwheel!) (figwheel-sidecar.repl-api/cljs-repl))")
  '(cider-lein-parameters "with-profile +dev repl :headless")
- '(company-box-icons-alist (quote company-box-icons-all-the-icons))
- '(compilation-message-face (quote default))
+ '(company-box-icons-alist 'company-box-icons-images)
+ '(compilation-message-face 'default)
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#839496")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
- '(custom-enabled-themes (quote (doom-molokai)))
+ '(custom-enabled-themes '(monokai))
  '(custom-safe-themes
-   (quote
-    ("d1b4990bd599f5e2186c3f75769a2c5334063e9e541e37514942c27975700370" "0eccc893d77f889322d6299bec0f2263bffb6d3ecc79ccef76f1a2988859419e" "75d3dde259ce79660bac8e9e237b55674b910b470f313cdf4b019230d01a982a" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "151bde695af0b0e69c3846500f58d9a0ca8cb2d447da68d7fbf4154dcf818ebc" "84da7b37214b4ac095a55518502dfa82633bee74f64daf6e1785322e77516f96" "a22f40b63f9bc0a69ebc8ba4fbc6b452a4e3f84b80590ba0a92b4ff599e53ad0" "2642a1b7f53b9bb34c7f1e032d2098c852811ec2881eec2dc8cc07be004e45a0" "669e02142a56f63861288cc585bee81643ded48a19e36bfdf02b66d745bcc626" "6bc387a588201caf31151205e4e468f382ecc0b888bac98b2b525006f7cb3307" "0598c6a29e13e7112cfbc2f523e31927ab7dce56ebb2016b567e1eff6dc1fd4f" "bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" "256bd513a9875cd855077162cdfee8d75b0ad7e18fe8b8cbc10412561fbef892" "80365dd15f97396bdc38490390c23337063c8965c4556b8f50937e63b5e9a65c" "8aca557e9a17174d8f847fb02870cb2bb67f3b6e808e46c0e54a44e3e18e1020" "6b289bab28a7e511f9c54496be647dc60f5bd8f9917c9495978762b99d8c96a0" "82d2cac368ccdec2fcc7573f24c3f79654b78bf133096f9b40c20d97ec1d8016" "f0dc4ddca147f3c7b1c7397141b888562a48d9888f1595d69572db73be99a024" "fe666e5ac37c2dfcf80074e88b9252c71a22b6f5d2f566df9a7aa4f9bea55ef8" "6d589ac0e52375d311afaa745205abb6ccb3b21f6ba037104d71111e7e76a3fc" "10461a3c8ca61c52dfbbdedd974319b7f7fd720b091996481c8fb1dded6c6116" "d2e9c7e31e574bf38f4b0fb927aaff20c1e5f92f72001102758005e53d77b8c9" "9954ed41d89d2dcf601c8e7499b6bb2778180bfcaeb7cdfc648078b8e05348c6" "49ec957b508c7d64708b40b0273697a84d3fee4f15dd9fc4a9588016adee3dad" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "59e82a683db7129c0142b4b5a35dbbeaf8e01a4b81588f8c163bd255b76f4d21" "addfaf4c6f76ef957189d86b1515e9cf9fcd603ab6da795b82b79830eed0b284" "a8c210aa94c4eae642a34aaf1c5c0552855dfca2153fa6dd23f3031ce19453d4" "6b2636879127bf6124ce541b1b2824800afc49c6ccd65439d6eb987dbf200c36" "fd944f09d4d0c4d4a3c82bd7b3360f17e3ada8adf29f28199d09308ba01cc092" "7eded71a68f518d9e4d4580b477a3fb03bf2d0ecc1234ff361a7fdc1591b1c9d" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "f8fb7488faa7a70aee20b63560c36b3773bd0e4c56230a97297ad54ff8263930" "9129c2759b8ba8e8396fe92535449de3e7ba61fd34569a488dd64e80f5041c9f" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "f8067b7d0dbffb29a79e0843797efabdf5e1cf326639874d8b407e9b034136a4" "97965ccdac20cae22c5658c282544892959dc541af3e9ef8857dbf22eb70e82b" "5f27195e3f4b85ac50c1e2fac080f0dd6535440891c54fcfa62cdcefedf56b1b" default)))
+   '("78e6be576f4a526d212d5f9a8798e5706990216e9be10174e3f3b015b8662e27" "d9646b131c4aa37f01f909fbdd5a9099389518eb68f25277ed19ba99adeb7279" "e7ba99d0f4c93b9c5ca0a3f795c155fa29361927cadb99cfce301caf96055dfd" "d0ebd553aa00983952185f9d0e1a004967614d7c75fc8547f1b9af1f26b77dfc" "94aef4c4f9cdd311271bf9d53afa9c0177158d75d65f1eb8299c1630bd92eceb" "933390027d8e1988f69d192af6011cbf27062131efa6ec7e8c466e074e8361aa" "3ab20589e7267ac9d2762402c794c9d9038c1c14c74361265283caf3b367efea" "34eedeff4f88404f8c7f7c7f45b3328b9bec171f6d9eede8e231cad4996eafb8" "e93f5dd31f755a6d8a845efca6eee237ccaeb9a4dc58d60a6c6e832b7ac1bfaa" "7922b14d8971cce37ddb5e487dbc18da5444c47f766178e5a4e72f90437c0711" "e7308299113bf8e50c63038151b0dce93f40ac1b8c1fe8ba8c37e3b8bbf91651" "e57eec7e0399272aaca7985a5cc94f3a2675db4cd2dbd79a99c72786e489e43c" "0c6a36393d5782839b88e4bf932f20155cb4321242ce75dc587b4f564cb63d90" "9ef81da35ce99a4c7155db7d46e4f8c20a51860d6879cf082e3ed1c5222c17d3" "f3ab34b145c3b2a0f3a570ddff8fabb92dafc7679ac19444c31058ac305275e1" default))
  '(diff-hl-dired-mode t t)
  '(diff-hl-margin-mode t)
  '(display-line-numbers t)
  '(dumb-jump-mode t)
  '(fci-rule-color "#555556")
- '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
- '(frame-background-mode (quote dark))
+ '(flycheck-color-mode-line-face-to-color 'mode-line-buffer-id)
+ '(frame-background-mode 'dark)
  '(global-company-mode t)
  '(global-diff-hl-mode t)
  '(global-highlight-parentheses-mode t)
- '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
+ '(highlight-changes-colors '("#FD5FF0" "#AE81FF"))
+ '(highlight-parentheses-colors '("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900"))
  '(highlight-symbol-colors
    (--map
     (solarized-color-blend it "#002b36" 0.25)
-    (quote
-     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+    '("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2")))
  '(highlight-symbol-foreground-color "#93a1a1")
  '(highlight-tail-colors
-   (quote
-    (("#3C3D37" . 0)
+   '(("#3C3D37" . 0)
      ("#679A01" . 20)
      ("#4BBEAE" . 30)
      ("#1DB4D0" . 50)
      ("#9A8F21" . 60)
      ("#A75B00" . 70)
      ("#F309DF" . 85)
-     ("#3C3D37" . 100))))
+     ("#3C3D37" . 100)))
  '(hl-bg-colors
-   (quote
-    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
+   '("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00"))
  '(hl-fg-colors
-   (quote
-    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
- '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
+   '("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36"))
  '(hl-sexp-background-color "#1c1f26")
  '(jdee-db-active-breakpoint-face-colors (cons "#1B2229" "#fd971f"))
  '(jdee-db-requested-breakpoint-face-colors (cons "#1B2229" "#b6e63e"))
@@ -91,13 +87,11 @@
  '(magit-diff-use-overlays nil)
  '(menu-bar-mode nil)
  '(nrepl-message-colors
-   (quote
-    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
+   '("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3"))
  '(objed-cursor-color "#e74c3c")
  '(package-selected-packages
-   (quote
-    (xref-js2 rjsx-mode indium diff-hl guru-mode zeno-theme one-themes doom-themes all-the-icons csv-mode restclient restclient-helm company-lua figlet company-edbi edbi edbi-sqlite company-box tern glsl-mode-hook glsl-mode solarized-theme nimbus-theme poet-theme vue-html-mode vue-mode gruvbox-theme color-theme-sanityinc-tomorrow material-theme company-tern fortune-cookie monokai-theme cyberpunk-theme el-search js2-refactor go-mode cmake-mode lice 0blayout realgud langtool geben web-mode php-mode yaml-mode websocket smooth-scroll markdown-mode dumb-jump helm-dash parinfer paredit xclip julia-mode python flycheck flycheck-haskell ac-cider magit highlight-parentheses haskell-mode cider company which-key sx slime projectile org nodejs-repl lua-mode dockerfile-mode docker)))
- '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
+   '(gdscript-mode all-the-icons-dired melancholy-theme twilight-theme cargo mood-one-theme lsp-ui flycheck-color-mode-line flycheck-pos-tip exec-path-from-shell cuda-mode pyenv-mode kaolin-themes indium helm-dash use-package opencl-mode packed coffee-mode dante hasky-stack hindent company-jedi company-ghci company-glsl company-go company-nginx erlang rust-mode pkgbuild-mode yasnippet-snippets elixir-mode elm-mode luarocks xref-js2 rjsx-mode diff-hl guru-mode one-themes all-the-icons csv-mode restclient restclient-helm company-lua figlet company-box glsl-mode-hook glsl-mode nimbus-theme poet-theme gruvbox-theme color-theme-sanityinc-tomorrow material-theme fortune-cookie monokai-theme cyberpunk-theme el-search go-mode cmake-mode lice 0blayout realgud langtool geben web-mode yaml-mode websocket markdown-mode dumb-jump parinfer paredit xclip julia-mode flycheck flycheck-haskell ac-cider magit highlight-parentheses haskell-mode cider company which-key slime projectile org nodejs-repl lua-mode dockerfile-mode docker))
+ '(pdf-view-midnight-colors (cons "#d6d6d4" "#1c1e1f"))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
  '(scroll-bar-mode nil)
@@ -129,8 +123,7 @@
     (cons 360 "#555556")))
  '(vc-annotate-very-old-color nil)
  '(weechat-color-list
-   (quote
-    (unspecified "#272822" "#3C3D37" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0")))
+   '(unspecified "#272822" "#3C3D37" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0"))
  '(which-key-mode t)
  '(window-divider-mode nil)
  '(xterm-color-names
@@ -151,13 +144,27 @@
 (global-set-key (kbd "C-h C-d") 'helm-dash-at-point)
 
 ;; Dumb jump
-(global-set-key (kbd "C-x C-j g") 'dumb-jump-go)
-(global-set-key (kbd "C-x C-j p") 'dumb-jump-back)
-(global-set-key (kbd "C-x C-j q") 'dumb-jump-quick-look)
+;; (global-set-key (kbd "C-x C-j g") 'dumb-jump-go)
+;; (global-set-key (kbd "C-x C-j p") 'dumb-jump-back)
+;; (global-set-key (kbd "C-x C-j q") 'dumb-jump-quick-look)
 
 ;; dumb-jump-go-other-window exactly like dumb-jump-go but uses find-file-other-window instead of find-file
 ;; dumb-jump-go-prefer-external like dumb-jump-go but will prefer definitions not in the current buffer
 ;; dumb-jump-go-prefer-external-other-window expected combination of dumb-jump-go-prefer-external and dumb-jump-go-other-window
+
+;; use web-mode for .jsx files
+(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+
+;; deactivate js2-mode warnings
+(setq js2-mode-show-parse-errors nil)
+(setq js2-mode-show-strict-warnings nil)
+
+;; ((js2-mode (flycheck-checker . javascrpt-eslint)))
+
+;; turn on flycheck globally
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
 
 ;; smooth scroll one line at a time
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
@@ -165,31 +172,33 @@
 ;; js2-mode full activation
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
 ;; js2-minor-mode with js-mode
-;; (add-hook 'js-mode-hook 'js2-minor-mode)
-;; (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+(add-hook 'js-mode-hook 'js2-minor-mode)
+(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+
+;; (setq js2-strict-missing-semi-warning nil)
 
 ;; js2 advancements
 ;; https://emacs.cafe/emacs/javascript/setup/2017/04/23/emacs-setup-javascript.html
-;; (add-hook 'js2-mode-hook #'js2-refactor-mode)
-;; (js2r-add-keybindings-with-prefix "C-c C-r")
-;; (define-key js2-mode-map (kbd "C-k") #'js2r-kill)
+(add-hook 'js2-mode-hook #'js2-refactor-mode)
+(js2r-add-keybindings-with-prefix "C-c C-r")
+(define-key js2-mode-map (kbd "C-k") #'js2r-kill)
 
-;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
-;; unbind it.
-;; (define-key js-mode-map (kbd "M-.") nil)
+;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so unbind it.
+(define-key js-mode-map (kbd "M-.") nil)
 
-;; (add-hook 'js2-mode-hook (lambda ()
-;;                            (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+(add-hook 'js2-mode-hook (lambda ()
+                           (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
 
 ;; company-tern (JS completion)
 ;; https://emacs.cafe/emacs/javascript/setup/2017/05/09/emacs-setup-javascript-2.html
-(require 'company)
-(require 'company-tern)
+;; (require 'company)
+;; (require 'company-tern)
 
-(add-to-list 'company-backends 'company-tern)
-(add-hook 'js2-mode-hook (lambda ()
-                          (tern-mode t)
+;; (add-to-list 'company-backends 'company-tern)
+(add-hook 'js-mode-hook (lambda ()
+                          ;; (tern-mode t)
                           (company-mode t)))
 
 ;; Disable completion keybindings, as we use xref-js2 instead (tern-mode-keymap gives an error)
@@ -204,7 +213,7 @@
 (setq indium-chrome-use-temporary-profile t)
 
 ;; Indium debug log
-;; (setq indium-client-debug t)
+(setq indium-client-debug t)
 
 ;; GLSL mode
 (autoload 'glsl-mode "glsl-mode" nil t)
@@ -227,8 +236,18 @@
 ; Lua company mode hook
 (add-hook 'lua-mode-hook #'my-lua-mode-company-init)
 
+;; Python mode config
+(setq python-shell-interpreter "/usr/bin/python")
+(add-to-list 'company-backends 'company-jedi)
+
+;; Erlang
+(setq load-path (cons "/usr/lib/erlang/lib/tools-3.4.2/emacs" load-path))
+(setq erlang-root-dir  "/usr/lib/erlang")
+(setq exec-path (cons "/usr/lib/erlang/bin" exec-path))
+(require 'erlang-start)
+
 ;; langtool support
-(setq langtool-language-tool-jar "~/.emacs.d/LanguageTool-4.6-SNAPSHOT/languagetool-commandline.jar")
+(setq langtool-language-tool-jar "~/.emacs.d/LT/languagetool-commandline.jar")
 (setq langtool-default-language "en-US")
 (setq langtool-mother-tongue "it")
 
@@ -239,10 +258,13 @@
 ;; (autoload 'figlet "figlet" nil t)
 
 ;; Use fortune cookie for great wisdom
-(fortune-cookie-mode)
+(use-package fortune-cookie
+  :config
+  (setq fortune-cookie-cowsay-args "-f lux -s")
+  (fortune-cookie-mode))
 
 ;; Ignore GConf (workaround for setting custom faces)
-;; https://emacs.stackexchange.com/questions/32641/something-changes-the-default-face-in-my-emacs 
+;; https://emacs.stackexchange.com/questions/32641/something-changes-the-default-face-in-my-emacs
 (define-key special-event-map [config-changed-event] 'ignore)
 
 ;; Custom faces
@@ -251,14 +273,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "gray10" :foreground "#bdbdb3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 103 :width normal :foundry "simp" :family "Hack"))))
- '(company-scrollbar-bg ((t (:background "#33b333b333b3"))))
- '(company-scrollbar-fg ((t (:background "#26e626e626e6"))))
- '(company-tooltip ((t (:inherit default :background "#5a195a195a19"))))
- '(company-tooltip-common ((t (:inherit font-lock-constant-face))))
- '(company-tooltip-selection ((t (:inherit font-lock-function-name-face))))
- '(minimap-active-region-background ((t (:background "#222222"))))
- '(minimap-font-face ((t (:height 35 :family "Hack")))))
+ '(default ((t (:inherit nil :stipple nil :background "gray10" :foreground "#bdbdb3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "SRC" :family "Hack")))))
 
 ;; Indentation (No Tabs)
 (setq-default indent-tabs-mode nil)
@@ -273,7 +288,8 @@
 (add-hook 'lisp-mode-hook #'enable-paredit-mode)
 
 ;; Company-box
-(add-hook 'company-mode-hook 'company-box-mode)
+(use-package company-box
+  :hook (company-mode . company-box-mode))
 
 ;; Windmove
 (windmove-default-keybindings)
@@ -292,3 +308,16 @@
 
 ;; Fix for emacs 26.2
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
+;; Set dired guessing for moving files to true
+(setq dired-dwim-target t)
+
+(when (display-graphic-p) (require 'all-the-icons))
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+
+;; lsp-mode config
+(require 'lsp-mode)
+(add-hook 'gdscript-mode-hook #'lsp)
+
+;; godot gdscript support
+(require 'gdscript-mode)
